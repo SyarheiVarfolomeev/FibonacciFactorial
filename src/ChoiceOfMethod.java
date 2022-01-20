@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Objects;
 
 public class ChoiceOfMethod {
     int algorithmId;
@@ -12,36 +11,35 @@ public class ChoiceOfMethod {
         this.n = n;
     }
 
-    public  void choice() {
+    public String choice() {
         if (algorithmId == 1) {
-            System.out.println(Arrays.toString(choiceOfFibonacci()));
+            return Arrays.toString(choiceOfFibonacci());
         }else{
-            System.out.println(choiceOfFactorial());
+            return String.valueOf(choiceOfFactorial());
         }
     }
 
    public int[] choiceOfFibonacci() {
        switch (loopType) {
-           case 1:
-               return Fibonacci.getFibonacciWhile(n);
+               case 1:
+                   return Fibonacci.getFibonacciWhile(n);
                case 2:
-                   System.out.println("222");
-               return Fibonacci.getFibonacciDowhile(n);
+                   return Fibonacci.getFibonacciDowhile(n);
                 case 3:
-               return Fibonacci.getFibonacciFor(n);
+                    return Fibonacci.getFibonacciFor(n);
        }
        return new int[0];
    }
 
     public long choiceOfFactorial() {
-            switch (loopType) {
-                case 1:
-                  return   Factorial.getFactorialWhile(n);
-                  case 2:
-                  return   Factorial.getFactorialDoWhile(n);
-                  case 3:
-                  return Factorial.getFactorialFor(n);
-            }
+        switch (loopType) {
+            case 1:
+                return   Factorial.getFactorialWhile(n);
+                case 2:
+                    return   Factorial.getFactorialDoWhile(n);
+                    case 3:
+                        return Factorial.getFactorialFor(n);
+        }
         return 0;
     }
 }
