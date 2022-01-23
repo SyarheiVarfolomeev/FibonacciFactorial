@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Objects;
 
 public class ChoiceOfMethod {
     int algorithmId;
@@ -6,40 +7,66 @@ public class ChoiceOfMethod {
     int n;
 
     public ChoiceOfMethod(int algorithmId, int loopType, int n) {
+        validateInputDateAlgorithmId(algorithmId);
         this.algorithmId = algorithmId;
+        validateInputDateLoopType(loopType);
         this.loopType = loopType;
         this.n = n;
     }
 
     public String choice() {
-        if (algorithmId == 1) {
-            return Arrays.toString(choiceOfFibonacci());
-        }else{
-            return String.valueOf(choiceOfFactorial());
+        switch (algorithmId) {
+            case 1:
+                return   Arrays.toString(Fibonacci.choiceOfFibonacci(loopType, n));
+            case 2:
+                return   String.valueOf(Factorial.choiceOfFactorial(loopType, n));
+        }
+        return null;
+    }
+
+    public int getAlgorithmId() {
+        return algorithmId;
+    }
+
+    public int getLoopType() {
+        return loopType;
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    private void validateInputDateAlgorithmId(int algorithmId) {
+        if ( algorithmId < 1 || algorithmId > 2) {
+            throw new InsufficientFundsException("Неверное первое число выбора (надо либо 1, либо 2)");
         }
     }
 
-   public int[] choiceOfFibonacci() {
-       switch (loopType) {
-               case 1:
-                   return Fibonacci.getFibonacciWhile(n);
-               case 2:
-                   return Fibonacci.getFibonacciDowhile(n);
-                case 3:
-                    return Fibonacci.getFibonacciFor(n);
-       }
-       return new int[0];
-   }
-
-    public long choiceOfFactorial() {
-        switch (loopType) {
-            case 1:
-                return   Factorial.getFactorialWhile(n);
-                case 2:
-                    return   Factorial.getFactorialDoWhile(n);
-                    case 3:
-                        return Factorial.getFactorialFor(n);
+    private void validateInputDateLoopType( int loopType) {
+        if ( loopType < 1 || loopType > 3) {
+            throw new InsufficientFundsException("Неверное второе число выбора (надо либо 1, либо 2, либо 3)");
         }
-        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "ChoiceOfMethod{" +
+                "algorithmId=" + algorithmId +
+                ", loopType=" + loopType +
+                ", n=" + n +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ChoiceOfMethod that = (ChoiceOfMethod) o;
+        return algorithmId == that.algorithmId && loopType == that.loopType && n == that.n;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(algorithmId, loopType, n);
     }
 }
