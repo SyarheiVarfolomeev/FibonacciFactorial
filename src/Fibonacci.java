@@ -16,9 +16,7 @@ public class Fibonacci {
     }
 
     private static int[] getFibonacciWhile(int naturalNumber){
-        int[] fibonacci = new int[naturalNumber];
-        fibonacci[0] = 0;
-        fibonacci[1] = 1;
+        int[] fibonacci = getIntArray(naturalNumber);
         int i = 2;
         while ( i < naturalNumber){
             fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
@@ -27,9 +25,7 @@ public class Fibonacci {
         return fibonacci;
     }
     private static int[] getFibonacciDowhile(int naturalNumber){
-        int[] fibonacci = new int[naturalNumber];
-        fibonacci[0] = 0;
-        fibonacci[1] = 1;
+        int[] fibonacci = getIntArray(naturalNumber);
         int i = 2;
         do {
             fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
@@ -38,12 +34,16 @@ public class Fibonacci {
         return fibonacci;
     }
     private static int[] getFibonacciFor(int naturalNumber){
-        int[] fibonacci = new int[naturalNumber];
-        fibonacci[0] = 0;
-        fibonacci[1] = 1;
+        int[] fibonacci = getIntArray(naturalNumber);
         for (int i = 2; i < naturalNumber; i++){
             fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
         }
         return fibonacci;
+    }
+    private static int[] getIntArray(int naturalNumber){
+        int[] Array = new int[naturalNumber];
+        Array[0] = 0;
+        Array[1] = 1;
+        return Array;
     }
 }
