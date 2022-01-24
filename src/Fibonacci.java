@@ -41,9 +41,9 @@ public class Fibonacci {
         return fibonacci;
     }
     private static int[] getIntArray(int naturalNumber){
-        int[] Array = new int[naturalNumber];
-        Array[0] = 0;
-        Array[1] = 1;
-        return Array;
+        int[] array = new int[naturalNumber];
+        array[0] = 0;
+        array[1] = 1;
+        return array;
     }
 }
