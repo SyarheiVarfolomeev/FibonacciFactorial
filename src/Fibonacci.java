@@ -1,8 +1,22 @@
 public class Fibonacci {
-    public static int[] getFibonacciWhile(int naturalNumber){
-        int[] fibonacci = new int[naturalNumber];
-        fibonacci[0] = 0;
-        fibonacci[1] = 1;
+
+    private Fibonacci(){
+    };
+
+    public static int[] choiceOfFibonacci(int loopType, int n) {
+        switch (loopType) {
+            case 1:
+                return getFibonacciWhile(n);
+            case 2:
+                return getFibonacciDowhile(n);
+            case 3:
+                return getFibonacciFor(n);
+        }
+        return new int[0];
+    }
+
+    private static int[] getFibonacciWhile(int naturalNumber){
+        int[] fibonacci = getIntArray(naturalNumber);
         int i = 2;
         while ( i < naturalNumber){
             fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
@@ -10,10 +24,8 @@ public class Fibonacci {
         }
         return fibonacci;
     }
-    public static int[] getFibonacciDowhile(int naturalNumber){
-        int[] fibonacci = new int[naturalNumber];
-        fibonacci[0] = 0;
-        fibonacci[1] = 1;
+    private static int[] getFibonacciDowhile(int naturalNumber){
+        int[] fibonacci = getIntArray(naturalNumber);
         int i = 2;
         do {
             fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
@@ -21,13 +33,17 @@ public class Fibonacci {
         }while (i < naturalNumber);
         return fibonacci;
     }
-    public static int[] getFibonacciFor(int naturalNumber){
-        int[] fibonacci = new int[naturalNumber];
-        fibonacci[0] = 0;
-        fibonacci[1] = 1;
+    private static int[] getFibonacciFor(int naturalNumber){
+        int[] fibonacci = getIntArray(naturalNumber);
         for (int i = 2; i < naturalNumber; i++){
             fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
         }
         return fibonacci;
+    }
+    private static int[] getIntArray(int naturalNumber){
+        int[] array = new int[naturalNumber];
+        array[0] = 0;
+        array[1] = 1;
+        return array;
     }
 }
